@@ -1,0 +1,21 @@
+﻿Category,Access
+Adult/Porn,Deny
+Blog/Bulletin -> Personal Web Pages/Blogs,Deny
+Business -> Swimsuits & Lingerie,Deny
+Dating,Deny
+Drugs,Deny
+Education -> Sex Education,Deny
+Excessive,Deny
+Gambling/Lottery,Deny
+IT Service -> DoH/DoT,Deny
+Illegal,Deny
+Life/Culture -> Abortion,Deny
+Proxy/Remote Control,Deny
+Religions -> Occult,Deny
+Shopping/Auction,Deny
+Social Networks,Deny
+Tobacco/Alcohol,Deny
+Weapons,Deny
+-HighRisk-,Deny
+-Phishing-,Deny
+-Uncategorized-,Deny
