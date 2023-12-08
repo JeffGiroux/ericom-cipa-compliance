@@ -1,5 +1,9 @@
 # ZTEdge CIPA Compliance
 
+## To Do -- WORK IN PROGRESS
+1. output CSV file to be used as an import file within the UI
+2. later...update code to have python call API to create policies automatically
+
 ## Contents
 
 - [Introduction](#introduction)
@@ -8,7 +12,9 @@
 
 ## Introduction
 
-This code will create an Internet Security Policy that is CIPA Compliant using [Ericom's ZTEdge platform](https://www.ericom.com) to provide filtering and protection.
+This code will create an example Internet Security Policy that follows [CIPA Compliance requirements](https://www.usac.org/e-rate/applicant-process/starting-services/cipa/) using [Ericom's ZTEdge platform](https://www.ericom.com). Ericom Web Security will perform filtering and protection. The [cipa_categories.csv](./cipa_categories.csv) file is used as an input file and can be modified with additional Ericom Web Security categories based on current CIPA requirements.
+
+*Note: The full category list can be seen in the Ericom tenant portal. You can also call the API endpoint. See [Ericom API](https://editor.swagger.io/?url=https://ztadmin.ericomcloud.net/api/v1/api-reference/specification.json) for more details. Reference endpoint /api/v1/policies/categories/names.*
 
 ## Requirements
 
@@ -24,7 +30,9 @@ pip3 install -r requirements.txt
 
 ## Usage
 
-1. Execute python command.
+1. Update [cipa_categories.csv](./cipa_categories.csv) as needed using current CIPA requirements. 
+
+2. Execute python command.
 
 Syntax:
 ```
