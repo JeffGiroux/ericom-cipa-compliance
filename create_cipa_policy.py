@@ -40,6 +40,20 @@ def create_policy_category(category,access,jwt,cookie):
     response = requests.request("POST", url, headers=headers, data=payload)
     return response
 
+def default_policy(jwt,cookie):
+    url = "https://ztadmin.ericomcloud.net/api/v1/policies/default/All"
+    payload = json.dumps({
+      "profile": "All",
+      "access": "Allow, No SSL Inspection"
+    })
+    headers = {
+      'Content-Type': 'application/json',
+      'Authorization': (f'Bearer {jwt}'),
+      'Cookie': 'route={0}'.format(str(cookie))
+    }
+    response = requests.request("PATCH", url, headers=headers, data=payload)
+    return response
+
 
 def usage():
     print("Usage: python3 create_cipa_policy.py <Tenant ID> <API Key> </folder/Output-CSV-file>")
@@ -70,6 +84,7 @@ if __name__ == "__main__":
 
     inputFile = "cipa_categories.csv"
 
+    print("Creating CIPA policy...")
     with open(inputFile, 'r') as file, open(outputFile, 'w') as output_file:
         # Skip input file header row
         header = next(file)
@@ -77,16 +92,18 @@ if __name__ == "__main__":
         # Write output file header row
         output_file.write("Category,Access\n")
 
-        print("Creating CIPA policy...")
         for line in file:
             # Assuming each line contains values separated by a comma
             values = line.strip().split(',')
             category = values[0]
             access = values[1]
             resp = create_policy_category(category,access,jwt,cookie)
-            output_file.write(f'{category},{access}\n')
-            print(resp.text)
+            print(f'{resp}: {category},{access} {resp.text}')
+            #output_file.write(f'{category},{access}\n')
     
+    print("Updating Default policy...")
+    resp = default_policy(jwt,cookie)
+
     print("Done!")
 
     logout(jwt)
