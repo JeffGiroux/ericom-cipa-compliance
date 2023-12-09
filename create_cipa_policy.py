@@ -28,11 +28,10 @@ def logout(jwt):
 
 def create_policy_category(category,access,jwt,cookie):
     url = "https://ztadmin.ericomcloud.net/api/v1/policies/categories"
-    payload = json.dumps({
-      "category": category,
-      "profile": "All",
-      "access": access
-    })
+    payload_array = [
+      {"category": category, "profile": "All", "access": access}
+    ]
+    payload = json.dumps(payload_array)
     headers = {
       'Content-Type': 'application/json',
       'Authorization': (f'Bearer {jwt}'),
@@ -84,8 +83,9 @@ if __name__ == "__main__":
             values = line.strip().split(',')
             category = values[0]
             access = values[1]
-            #resp = create_policy_category(category,access,jwt,cookie)
+            resp = create_policy_category(category,access,jwt,cookie)
             output_file.write(f'{category},{access}\n')
+            print(resp.text)
     
     print("Done!")
 
