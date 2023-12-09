@@ -1,8 +1,8 @@
 # ZTEdge CIPA Compliance
 
 ## To Do -- WORK IN PROGRESS
-1. output CSV file to be used as an import file within the UI
-2. later...update code to have python call API to create policies automatically
+1. error checks for policy conflicts
+2. create output CSV file to be used in Tenant UI "import policy"
 
 ## Contents
 
@@ -48,7 +48,7 @@ Creating CIPA policy...
 Done!
 ```
 
-2. View results
+3. View results
 
 Example Output in CSV file:
 ```
