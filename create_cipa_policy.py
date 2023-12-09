@@ -72,6 +72,10 @@ if __name__ == "__main__":
     inputFile = "cipa_categories.csv"
 
     with open(inputFile, 'r') as file, open(outputFile, 'w') as output_file:
+        # Skip input file header row
+        header = next(file)
+
+        # Write output file header row
         output_file.write("Category,Access\n")
         print("Creating CIPA policy...")
         for line in file:
