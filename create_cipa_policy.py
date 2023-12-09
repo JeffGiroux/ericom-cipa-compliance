@@ -77,6 +77,7 @@ if __name__ == "__main__":
 
         # Write output file header row
         output_file.write("Category,Access\n")
+
         print("Creating CIPA policy...")
         for line in file:
             # Assuming each line contains values separated by a comma
@@ -85,7 +86,6 @@ if __name__ == "__main__":
             access = values[1]
             #resp = create_policy_category(category,access,jwt,cookie)
             output_file.write(f'{category},{access}\n')
-            print(category,access)
     
     print("Done!")
 
