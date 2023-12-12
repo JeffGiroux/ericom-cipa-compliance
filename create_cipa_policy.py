@@ -26,6 +26,15 @@ def logout(jwt):
     response = requests.request("DELETE", url, headers=headers)
     return response
 
+def delete_policy_category(category,jwt,cookie):
+    url = f'https://ztadmin.ericomcloud.net/api/v1/policies/categories/All/{category}'
+    headers = {
+      'Authorization': (f'Bearer {jwt}'),
+      'Cookie': 'route={0}'.format(str(cookie))
+    }
+    response = requests.request("DELETE", url, headers=headers)
+    return response
+
 def create_policy_category(category,access,jwt,cookie):
     url = "https://ztadmin.ericomcloud.net/api/v1/policies/categories"
     payload_array = [
@@ -97,6 +106,8 @@ if __name__ == "__main__":
             values = line.strip().split(',')
             category = values[0]
             access = values[1]
+            resp = delete_policy_category(category,jwt,cookie)
+            print(f'{resp}: {category} {resp.text}')
             resp = create_policy_category(category,access,jwt,cookie)
             print(f'{resp}: {category},{access} {resp.text}')
             #output_file.write(f'{category},{access}\n')
