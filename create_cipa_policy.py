@@ -1,6 +1,7 @@
 import requests
 import json
 import uuid, sys, time
+from urllib.parse import quote
 
 
 def get_jwt(tenant, key):
@@ -106,8 +107,9 @@ if __name__ == "__main__":
             values = line.strip().split(',')
             category = values[0]
             access = values[1]
-            resp = delete_policy_category(category,jwt,cookie)
-            print(f'{resp}: {category} {resp.text}')
+            encoded_category_name = quote(category, safe='')
+            resp = delete_policy_category(encoded_category_name,jwt,cookie)
+            #print(f'Deleting {resp}: {category} {resp.text}')
             resp = create_policy_category(category,access,jwt,cookie)
             print(f'{resp}: {category},{access} {resp.text}')
             #output_file.write(f'{category},{access}\n')
