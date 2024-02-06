@@ -1,8 +1,8 @@
 # Ericom CIPA Compliance
 
 ## To Do -- WORK IN PROGRESS
-1. error checks for policy conflicts
-2. create output CSV file to be used in Tenant UI "import policy"
+1. create output CSV file to be used in Tenant UI "import policy"
+2. Works only with the Profile "All"
 
 ## Contents
 
