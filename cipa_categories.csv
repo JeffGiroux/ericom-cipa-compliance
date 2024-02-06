@@ -8,6 +8,7 @@ Education -> Sex Education,Deny
 Excessive,Deny
 Gambling/Lottery,Deny
 IT Service -> DoH/DoT,Deny
+IT Service -> VPN,Deny
 Illegal,Deny
 Life/Culture -> Abortion,Deny
 Proxy/Remote Control,Deny
